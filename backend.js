@@ -30,7 +30,7 @@ app.use(express.json());
 
 db.connect((error) => {
   if (error) {
-    console.log(error);
+    console.error(error);
   } else {
     console.log("Ansluten till MySQL");
   }

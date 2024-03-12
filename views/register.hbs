@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrera dig</title>
      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <script src="../js/frontend_register.js" defer></script>
+    
 </head>
 <body>
     
@@ -22,7 +22,9 @@
         <div class="card" style="width: 18rem;">            
             <div class="card-header">Registrera dig</div>    
             <div class="card-body">
-                <form action="/auth/register" method="POST">
+            {{!-- Rewrite this code to send the register info to a clientside js file --}}
+
+                <form>
                     <div class="mb-3">
                         <label for="name-reg" class="form-label">Namn:</label>
                         <input type="text" class="form-control" id="name-reg" name="name">                        
@@ -49,6 +51,9 @@
     {{#if message }}
         <h4 class="alert alert-danger mt-4">{{message}}</h4>
     {{/if}}
-
+    {{#else}}
+        <h4 class="alert alert-success mt-4"></h4>
+    {{/else}}
+    <script src="../js/frontend_register.js"></script>
 </body>
 </html>
