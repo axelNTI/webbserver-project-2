@@ -7,7 +7,7 @@ const bcrypt = require("bcryptjs");
 
 const app = express();
 app.set("view engine", "hbs");
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "../.env" });
 
 // Regex för att validera epostadress
 // https://stackoverflow.com/questions/46155/how-can-i-validate-an-email-address-in-javascript
