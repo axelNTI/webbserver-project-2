@@ -154,7 +154,6 @@ app.post("/auth/login", (req, res) => {
       const email_array_login = result.map((user) => user.email);
 
       // Om användarnamnet eller epostadressen inte finns i databasen så skickas ett felmeddelande till klienten
-
       if (emailRegex.test(name) && !email_array_login.includes(name)) {
         return res.status(400).json({ message: "Fel inloggningsuppgifter" });
       }
