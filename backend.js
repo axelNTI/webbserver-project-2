@@ -1,8 +1,6 @@
 const express = require("express");
 const mysql = require("mysql2");
 const dotenv = require("dotenv");
-const path = require("path");
-const e = require("express");
 const bcrypt = require("bcryptjs");
 
 const app = express();
@@ -104,10 +102,16 @@ app.post("/auth/register", (req, res) => {
     bcrypt.genSalt(10, (err, salt) => {
       if (err) {
         console.error(err);
+
+        // Om det blir ett fel så skickas ett felmeddelande till klienten
+        return res.status(500).json({ message: "Server error" });
       }
       bcrypt.hash(password, salt, (err, hashedPassword) => {
         if (err) {
           console.error(err);
+
+          // Om det blir ett fel så skickas ett felmeddelande till klienten
+          return res.status(500).json({ message: "Server error" });
         }
 
         // Lägger till användaren i databasen
@@ -117,6 +121,9 @@ app.post("/auth/register", (req, res) => {
           (err, result) => {
             if (err) {
               console.error(err);
+
+              // Om det blir ett fel så skickas ett felmeddelande till klienten
+              return res.status(500).json({ message: "Server error" });
             } else {
               // Om användaren har lagts till så skickas ett meddelande till klienten
               return res.status(200).json({ message: "Användare registrerad" });
